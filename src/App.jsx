@@ -1,8 +1,8 @@
-import Navbar from "./Components/navbar";
-import Hero from "./Components/hero";
-import Categories from "./Components/categories";
-import Cards from "./Components/cards";
-import Footer from "./Components/footer";
+import Navbar from "./components/navbar";
+import Hero from "./components/hero";
+import Categories from "./components/categories";
+import Cards from "./components/cards";
+import Footer from "./components/footer";
 
 function App() {
   return (
