@@ -55,16 +55,22 @@ function Cards({ darkMode }) {
   return (
 
     <div
-      className={`px-6 md:px-10 py-20 transition-all duration-500 ${
+      className={`relative px-6 md:px-10 py-24 transition-all duration-500 overflow-hidden ${
         darkMode
-          ? "bg-transparent text-white"
-          : "bg-transparent text-white"
+          ? "text-white"
+          : "text-gray-900"
       }`}
     >
 
+      {/* Background Glow */}
+
+      <div className="absolute top-20 left-10 w-72 h-72 bg-pink-500/20 blur-[120px] rounded-full"></div>
+
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full"></div>
+
       {/* Heading */}
 
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-14">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between mb-16">
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -72,11 +78,19 @@ function Cards({ darkMode }) {
           transition={{ duration: 0.8 }}
         >
 
-          <h1 className="text-4xl md:text-6xl font-bold">
+          <h1
+            className={`text-4xl md:text-6xl font-bold leading-tight ${
+              darkMode ? "text-white" : "text-gray-900"
+            }`}
+          >
             Popular Luxury Stays ✨
           </h1>
 
-          <p className="mt-4 text-lg text-gray-300">
+          <p
+            className={`mt-4 text-lg ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
             Handpicked homes with comfort, elegance, and unforgettable experiences.
           </p>
 
@@ -86,10 +100,14 @@ function Cards({ darkMode }) {
 
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="mt-6 md:mt-0 bg-white/10 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-2xl shadow-xl"
+          className={`mt-6 md:mt-0 backdrop-blur-xl px-6 py-3 rounded-2xl shadow-2xl border ${
+            darkMode
+              ? "bg-white/10 border-white/20"
+              : "bg-white/70 border-pink-100"
+          }`}
         >
 
-          <p className="text-pink-400 font-semibold text-lg">
+          <p className="text-pink-500 font-semibold text-lg">
             ❤️ Wishlist: {wishlist.length}
           </p>
 
@@ -99,7 +117,7 @@ function Cards({ darkMode }) {
 
       {/* Cards Grid */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
         {properties.map((property) => (
 
@@ -123,10 +141,10 @@ function Cards({ darkMode }) {
                 type: "spring",
                 stiffness: 200,
               }}
-              className={`rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 cursor-pointer ${
+              className={`rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 shadow-2xl hover:shadow-pink-500/30 ${
                 darkMode
-                  ? "bg-white/10 backdrop-blur-lg border border-white/10 text-white"
-                  : "bg-white/10 backdrop-blur-lg border border-white/10 text-white"
+                  ? "bg-white/10 backdrop-blur-xl border border-white/10"
+                  : "bg-white/70 backdrop-blur-xl border border-pink-100"
               }`}
             >
 
@@ -157,7 +175,7 @@ function Cards({ darkMode }) {
 
                 </motion.div>
 
-                {/* Property Image */}
+                {/* Image */}
 
                 <img
                   src={property.image}
@@ -167,7 +185,7 @@ function Cards({ darkMode }) {
 
                 {/* Overlay */}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
               </div>
 
@@ -177,30 +195,42 @@ function Cards({ darkMode }) {
 
                 <div className="flex justify-between items-center">
 
-                  <h2 className="text-2xl font-bold text-white">
+                  <h2
+                    className={`text-2xl font-bold ${
+                      darkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     {property.title}
                   </h2>
 
-                  <p className="text-pink-400 font-semibold text-lg">
+                  <p className="text-pink-500 font-semibold text-lg">
                     ⭐ {property.rating}
                   </p>
 
                 </div>
 
-                <p className="mt-2 text-lg text-gray-300">
+                <p
+                  className={`mt-2 text-lg ${
+                    darkMode ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
                   {property.location}
                 </p>
 
                 <div className="mt-6 flex items-center justify-between">
 
-                  <p className="font-bold text-xl text-white">
+                  <p
+                    className={`font-bold text-xl ${
+                      darkMode ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     {property.price}
                   </p>
 
                   <motion.button
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full text-sm transition-all duration-300 shadow-lg shadow-pink-500/30"
+                    className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full text-sm transition-all duration-300 shadow-xl shadow-pink-500/40"
                   >
 
                     Book Now
