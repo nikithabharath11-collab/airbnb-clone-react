@@ -8,7 +8,7 @@ import CursorGlow from "./components/CursorGlow";
 import Stats from "./components/Stats";
 import Destinations from "./components/Destinations";
 import LuxuryFooter from "./components/LuxuryFooter";
-import ParticlesBackground from "./components/ParticlesBackground";
+
 
 import { useState } from "react";
 
@@ -28,7 +28,7 @@ function App() {
 
       {/* Animated Background */}
 
-      <ParticlesBackground />
+      
 
       {/* Cursor Glow */}
 
